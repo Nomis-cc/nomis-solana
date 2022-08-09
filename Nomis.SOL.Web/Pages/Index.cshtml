@@ -1,0 +1,36 @@
+﻿@page
+@using Nomis.SOL.Web
+@model Nomis.SOL.Web.Pages.IndexModel
+
+<h1 class="hero-title h2-mobile mt-0 is-revealing">Get @Consts.Brand Score</h1>
+<form class="row" method="post">
+    <div class="hero-form field-grouped is-revealing">
+        <div class="input-group">
+            <input asp-for="WalletAddress" type="text" class="form-control" placeholder="Solana wallet address">
+        </div>
+
+    </div>
+    <div class="justify-content-center">
+        <button type="submit" class="button button-primary button-shadow m-3">Get Score</button>
+    </div>
+    @if (Model.NoData)
+    {
+        <div class="alert alert-warning" role="alert">
+            No Enough Data Yet!
+        </div>
+    }
+    else
+    if (Model.Error)
+    {
+        <div class="alert alert-warning" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+    else
+    if (Model.Result != null)
+    {
+        <partial name="_WalletStatsPartial" model="Model.Result" />
+    }
+
+</form>
+

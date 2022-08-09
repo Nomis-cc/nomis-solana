@@ -1,0 +1,130 @@
+﻿@using Nomis.SOL.Web
+@using Nomis.SOL.Web.Helpers
+
+@model Nomis.SOL.Web.Services.WalletScoreResult
+
+@{
+    var score = Model.Score;
+    var color = "#8f8f8f";
+    if (score > 0.25)
+    {
+        color = "#cf2b2b";
+    }
+    if (score > 0.50)
+    {
+        color = "#cfc62b";
+    }
+    if (score > 0.75)
+    {
+        color = "#57cf2b";
+    }
+}
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h3 class="animate__animated animate__zoomIn m-3">@Consts.Brand Score: <span style="color: @color">@score.ToString("P")
+</span>
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+       
+       class="twitter-share-button"
+       data-size="large"
+       data-text="Hey! Check out My Numus Score:"
+       data-show-count="false">Twitter</a></h3>
+<p>
+    <a class="button button-shadow button-primary" type="button" data-bs-toggle="collapse" data-bs-target="#detailTable" aria-expanded="false" aria-controls="detailTable">Show details</a>
+</p>
+<table class="table table-striped table-hover collapse mb-48" id="detailTable">
+    <thead>
+        <tr style="text-align-last: center;">
+            <th scope="col">#</th>
+            <th scope="col">Param</th>
+            <th scope="col">Value</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>WalletAge</td>
+            <td>@Model.Stats.WalletAge</td>
+            <td swagger-desc-for="Stats.WalletAge"></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Balance</td>
+            <td>@Model.Stats.Balance.Round(6)</td>
+            <td swagger-desc-for="Stats.Balance"></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>AverageTransactionTime</td>
+            <td>@Model.Stats.AverageTransactionTime.Round()</td>
+            <td swagger-desc-for="Stats.AverageTransactionTime"></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>MaxTransactionTime</td>
+            <td>@Model.Stats.MaxTransactionTime.Round()</td>
+            <td swagger-desc-for="Stats.MaxTransactionTime"></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>MinTransactionTime</td>
+            <td>@Model.Stats.MinTransactionTime.Round()</td>
+            <td swagger-desc-for="Stats.MinTransactionTime"></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>TotalTransactions</td>
+            <td>@Model.Stats.TotalTransactions</td>
+            <td swagger-desc-for="Stats.TotalTransactions"></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>WalletTurnover</td>
+            <td>@Model.Stats.WalletTurnover.Round()</td>
+            <td swagger-desc-for="Stats.WalletTurnover"></td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>NftHolding</td>
+            <td>@Model.Stats.NftHolding</td>
+            <td swagger-desc-for="Stats.NftHolding"></td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>TimeFromLastTransaction</td>
+            <td>@Model.Stats.TimeFromLastTransaction</td>
+            <td swagger-desc-for="Stats.TimeFromLastTransaction"></td>
+        </tr>
+        <tr>
+            <th scope="row">10</th>
+            <td>NftTrading</td>
+            <td>@Model.Stats.NftTrading.Round()</td>
+            <td swagger-desc-for="Stats.NftTrading"></td>
+        </tr>
+        <tr>
+            <th scope="row">11</th>
+            <td>NftWorth</td>
+            <td>@Model.Stats.NftWorth.Round()</td>
+            <td swagger-desc-for="Stats.NftWorth"></td>
+        </tr>
+
+        <tr>
+            <th scope="row">12</th>
+            <td>TransactionsPerMonth</td>
+            <td>@Model.Stats.TransactionsPerMonth.Round()</td>
+            <td swagger-desc-for="Stats.TransactionsPerMonth"></td>
+        </tr>
+        <tr>
+            <th scope="row">13</th>
+            <td>LastMonthTransactions</td>
+            <td>@Model.Stats.LastMonthTransactions</td>
+            <td swagger-desc-for="Stats.LastMonthTransactions"></td>
+        </tr>
+        <tr>
+            <th scope="row">15</th>
+            <td>TokensHolding</td>
+            <td>@Model.Stats.TokensHolding</td>
+            <td swagger-desc-for="Stats.TokensHolding"></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,2 @@
+# Nomis.SOL
+Nomis is a crypto protocol based on a mathematical prediction and AI model enabling protocol users with a favorable on-chain credit score to borrow crypto with a fair collateral and APR on a case-by-case basis. On the other hand, Nomis is an open-source protocol that helps web3 developers both to build new on-chain solutions and use cases, and to balance already existing high-TVL protocols. 
